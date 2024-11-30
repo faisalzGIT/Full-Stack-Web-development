@@ -1,1 +1,4 @@
 /* This is utility CSS */
+.invert{
+	filter:invert(100%);
+}

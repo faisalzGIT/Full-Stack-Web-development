@@ -1,4 +1,6 @@
 /* This is main CSS */
-h1{
-	font-size: 200px;
+body{
+	background-color: #000000;		
+	color: white;
 }
+
