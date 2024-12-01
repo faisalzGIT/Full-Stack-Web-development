@@ -1,6 +1,63 @@
 /* This is main CSS */
+
+
+@import url('https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&family=Nunito:wght@200..1000&display=swap');
+
+*{
+	margin: 0px;
+	padding: 0px;
+	font-family: "Exo 2", sans-serif;
+  	font-weight: 300;
+
+}
+
 body{
 	background-color: #000000;		
-	color: white;
+	color: white; 
+} 
+
+.left{
+	width: 25vw;
+	padding: 10px;
+	height: 90vh;
+}
+
+.right{
+	width: 75vw;
+	height: 90vh;
+}
+
+.home{
+	
+}
+
+.home>.logo{
+	display: flex;
+	justify-content: start;
+	align-items: center;
+	gap: 6px;
+	font-size: 30px;
+	font-weight: 500;
+}
+
+.home ul {
+    padding-left: 7px;
+}
+
+.home ul li {
+	/* width: 25px; */
+	font-size: 18px;
+	list-style: none;
+	display: flex;
+	justify-content: start;
+	align-items: center;
+	gap: 4px;
+	padding-top: 13px;
+	font-weight: 400;
+	font-size: 16px;
+}
+
+.home ul li img {
+    width: 17px;
 }
 
