@@ -16,16 +16,15 @@ body{
 	color: white; 
 } 
 
+
+/* Left ONE here */
 .left{
 	width: 25vw;
 	padding: 10px;
 	height: 90vh;
 }
 
-.right{
-	width: 75vw;
-	height: 90vh;
-}
+
 
 .home{
 	
@@ -46,7 +45,7 @@ body{
 
 .home ul li {
 	/* width: 25px; */
-	font-size: 18px;
+	font-size: 17px;
 	list-style: none;
 	display: flex;
 	justify-content: start;
@@ -61,3 +60,82 @@ body{
     width: 17px;
 }
 
+.library{
+	min-height: 75vh;
+	position: relative;
+}
+
+.heading{
+	display: flex;
+	gap: 10px;
+	padding-top: 13px;
+	width: 100%;
+	font-size: 13px;
+	font-weight: 500;
+
+}
+
+.heading img{
+	width: 26px;
+}
+
+.footer{
+	display: flex;
+	flex-wrap: wrap;
+	gap: 9px;
+	font-size: 12px;
+	position: absolute;
+	bottom: 0;
+	margin-bottom: 10px;	
+}
+
+.footer a{
+	color: rgb(179, 179, 179);
+	font-style: none;
+	text-decoration: none;
+}
+
+/* Left ONE ENDs here */
+
+
+/* Right ONE starts here */
+.right{
+	width: 75vw;
+	height: 90vh;
+	margin: 16px 0px;
+
+}
+
+.header{
+	display: flex ;
+	justify-content:space-between;
+	background-color: #212121;
+}
+
+.header > * {
+	gap: 10px;
+	padding: 13px;
+}
+
+.spotifyPlaylists{
+	padding: 13px;
+}
+
+.cardContainer{
+	padding: 20px 12px;
+}
+
+.card{
+	width: 200px;
+	border-radius: 5px;
+	padding: 9px;
+	background: #252525;
+}
+
+.card img{
+	width: 100%;
+	object-fit: contain;
+	border-radius: 5px;
+}
+
+/* Right ONE ENDs here */
