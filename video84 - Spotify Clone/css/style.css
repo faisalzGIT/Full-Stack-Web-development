@@ -136,13 +136,14 @@ body{
 	display: flex;
 	flex-direction: column;
 	gap: 6px;
+	position: relative;
 }
 
-.card img{
+.card :first-child img{
 	width: 100%;
 	object-fit: contain;
 	border-radius: 5px;
-	
+
 }
 
 .card h3 {
@@ -152,6 +153,16 @@ body{
 .card p{
 	font-weight: 200;
 	font-size: 15px;
+}
+
+.card img:last-of-type {
+    width: 40px;
+	position: absolute;
+	bottom: 13px;
+	right: 20px;
+	bottom: 88px;
+    right: 17px;
+	opacity: 0;
 }
 
 
