@@ -20,8 +20,11 @@ body{
 /* Left ONE here */
 .left{
 	width: 25vw;
-	padding: 10px;
+	padding: 7px;
 	height: 90vh;
+	display: flex;
+    gap: 3px;
+    flex-direction: column;
 }
 
 
@@ -61,7 +64,7 @@ body{
 }
 
 .library{
-	min-height: 75vh;
+	min-height: 75.5vh;
 	position: relative;
 }
 
@@ -83,8 +86,9 @@ body{
 	display: flex;
 	flex-wrap: wrap;
 	gap: 9px;
-	font-size: 12px;
+	font-size: 11px;
 	position: absolute;
+	left: 10px;
 	bottom: 0;
 	margin-bottom: 10px;	
 }
@@ -101,8 +105,8 @@ body{
 /* Right ONE starts here */
 .right{
 	width: 75vw;
-	height: 90vh;
-	margin: 16px 0px;
+    margin: 9px 0px;
+    height: 97.4vh;
 
 }
 
@@ -121,16 +125,22 @@ body{
 	padding: 13px;
 }
 
+.spotifyPlaylists > h1{
+	padding: 8px;
+}
+
 .cardContainer{
-	padding: 20px 12px;
+	padding: 17px 12px;
 	display: flex;
 	flex-wrap: wrap;
 	gap: 10px;
+	overflow-y: scroll;
+	max-height: 63.5vh;
 }
 
 .card{
-	width: 200px;
-	border-radius: 5px;
+	width: 186px;
+	border-radius: 4px;
 	padding: 9px;
 	background: #252525;
 	display: flex;
@@ -139,30 +149,36 @@ body{
 	position: relative;
 }
 
-.card :first-child img{
+.card img{
 	width: 100%;
 	object-fit: contain;
-	border-radius: 5px;
+	border-radius: 4px;
 
 }
 
 .card h3 {
 	font-weight: 400;
+
 }
 
 .card p{
-	font-weight: 200;
-	font-size: 15px;
+	font-weight: 300;
+	font-size: 14px;
 }
 
-.card img:last-of-type {
-    width: 40px;
+.play{
+    width: 45px;
 	position: absolute;
-	bottom: 13px;
-	right: 20px;
-	bottom: 88px;
+	bottom: 85px;
     right: 17px;
 	opacity: 0;
+	transition:all 0.5s ease-in;
+}
+
+.play img{
+	width: 100%;
+	object-fit: contain;
+	
 }
 
 
