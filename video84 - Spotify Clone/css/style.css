@@ -237,5 +237,23 @@ body{
 	padding: 10px;
 }
 
+.songinfo{
+
+}
+
+.songButtons{
+	display: flex;
+	justify-content: center;
+	gap: 15px;
+
+}
+
+.songButtons img{
+	width: 32px;
+}
+
+.songtime{
+
+}
 
 /* Right ONE ENDs here */
