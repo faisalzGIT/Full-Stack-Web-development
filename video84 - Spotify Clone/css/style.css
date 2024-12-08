@@ -107,18 +107,66 @@ body{
 	width: 75vw;
     margin: 9px 0px;
     height: 97.4vh;
-
+	position: relative;
 }
 
 .header{
 	display: flex ;
 	justify-content:space-between;
+	align-items: center;
 	background-color: #212121;
+	height: 54px;
+	padding: 0%;
 }
 
 .header > * {
 	gap: 10px;
 	padding: 13px;
+}
+
+/* Buttons */
+.buttons{
+	display: flex;
+	gap: 15px;
+	/*height: 10px; */
+	margin-right: 8px;
+	padding: 3px;
+	object-fit:fill;
+	
+}
+
+.signupbtn{
+	background: transparent;
+    border: none; 
+	color: #cbcbcb;
+    font-weight: 600;
+	font-size: 15.5px;
+	transition: all 0.12s ease-in-out;
+	cursor: pointer;
+}
+
+.signupbtn:hover{
+	font-size: 20.5;
+	color:#efeded;
+	font-weight: 700;
+}
+
+.loginbtn{
+	background: white;
+	padding: 4px 6px;
+	border-radius: 5px;
+    border: none; 
+	font-weight: 600;
+	font-size: 15.5px;
+	transition: all 0.3s ease-in-out;
+	cursor: pointer;
+}
+
+.loginbtn:hover{
+	/* font-size: 20.5; */
+	color:#3e3e3e;
+	background-color:#cbcbcb;
+	box-shadow: inset 0px 4px 6px rgba(0, 0, 0, 0.2); /* Smooth shadow effect */
 }
 
 .spotifyPlaylists{
@@ -179,6 +227,14 @@ body{
 	width: 100%;
 	object-fit: contain;
 	
+}
+
+.playbar{
+	background-color: #223225;
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	padding: 10px;
 }
 
 
