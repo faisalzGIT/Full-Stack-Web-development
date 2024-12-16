@@ -71,7 +71,7 @@ body{
 .heading{
 	display: flex;
 	gap: 10px;
-	padding-top: 13px;
+	/* padding-top: 13px; */
 	width: 100%;
 	font-size: 13px;
 	font-weight: 500;
@@ -80,6 +80,62 @@ body{
 
 .heading img{
 	width: 26px;
+}
+
+.songList{
+	height: 460px;
+	overflow-y: scroll;
+	margin: 10px 0px;
+
+}
+
+.info div{
+	font-size: 13px;
+	font-weight: 300;
+}
+
+.info :first-child{
+	font-size: 15px;
+	font-weight: 400;
+}
+
+.songList ul{
+	padding: 13px 4px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+}
+.songList ul li {
+    list-style: decimal;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    gap: 10px;
+	margin: 6px 0px;
+    padding: 11px;
+    border:3px solid rgb(59, 58, 58);
+	border-radius: 6px;
+	width: 300px;
+	height: 25px;
+
+}
+
+.playnow{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.playnow span{
+	font-size: 12px;
+	width: 60px;
+}
+
+.playnow img{
+	width: 18px;
+	
 }
 
 .footer{
@@ -170,24 +226,31 @@ body{
 }
 
 .spotifyPlaylists{
-	padding: 13px;
+	padding: 0px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
 }
 
 .spotifyPlaylists > h1{
-	padding: 8px;
+    padding: 12px;
+	margin-left: -9px;
+    width: 97%;
 }
 
 .cardContainer{
-	padding: 17px 12px;
+    padding: 1px 12px;
 	display: flex;
 	flex-wrap: wrap;
 	gap: 10px;
 	overflow-y: scroll;
-	max-height: 63.5vh;
+	max-height: 69vh;
+	width: 73vw; 
 }
 
 .card{
-	width: 186px;
+	width: 195px;
 	border-radius: 4px;
 	padding: 9px;
 	background: #252525;
@@ -230,30 +293,59 @@ body{
 }
 
 .playbar{
-	background-color: #223225;
+	background-color: #212121;
 	position: absolute;
 	bottom: 0;
-	width: 100%;
+	width: 95%;
+	height: 45px;
+	margin-bottom: 9px;
+	margin-left: -5px;
 	padding: 10px;
+	object-fit: contain;
+	border: 3px solid rgb(183, 182, 182);
+	border-radius: 10px;
+	
 }
 
-.songinfo{
-
+.abovebar{
+	display: flex;
+	justify-content: space-between;
 }
 
 .songButtons{
 	display: flex;
 	justify-content: center;
 	gap: 15px;
-
 }
 
 .songButtons img{
 	width: 32px;
+	cursor: pointer;
 }
 
 .songtime{
 
 }
 
+.seekbar{
+	height: 1px;
+	width: 96%;
+	border: 1px solid rgb(217, 217, 217);
+	border-radius: 15px;
+	position: absolute;
+	bottom: 8px;
+	left: 17px;
+}
+
+.circle{
+	width: 12px;
+    height: 12px;
+    background-color: rgb(227, 227, 227);
+    border-radius: 19px;
+    position: relative;
+    bottom: 5.5px;
+	left: 0%;
+	margin-left: -1px;
+	transition: left 0.5s;
+}
 /* Right ONE ENDs here */
