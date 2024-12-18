@@ -8,7 +8,7 @@ function formatSeconds(seconds) {
     return `${minutes}:${remainingSeconds.toString().padStart(2, '0')}`;
 }
 
-async function getsongs() {
+async function getsongs() {	
 	let a = await fetch("http://127.0.0.1:5500/Audios/");
 	let response = await a.text();
 
@@ -85,8 +85,18 @@ async function main() {
 
 	// listen for time update event
 	currentSong.addEventListener("timeupdate",()=>{
-		console.log(currentSong.currentTime, currentSong.duration);
+		// console.log(currentSong.currentTime, currentSong.duration);
 		document.querySelector(".songtime").innerHTML = `${formatSeconds(currentSong.currentTime)}/ ${formatSeconds(currentSong.duration)}`
+		document.querySelector(".circle").style.left = (currentSong.currentTime/currentSong.duration)*100 + "%";
+	})
+
+
+	//add event listener for seekbar
+	document.querySelector(".seekbar").addEventListener("click", (e)=>{
+		// console.log(e.target.getBoundingClientRect().width,e.offsetX);
+		let percent = (e.offsetX / e.target.getBoundingClientRect().width) * 100;
+		document.querySelector(".circle").style.left = percent + "%";
+		currentSong.currentTime = (currentSong.duration*percent)/100;	
 	})
 } 
 

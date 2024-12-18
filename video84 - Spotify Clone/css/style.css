@@ -335,6 +335,7 @@ body{
 	position: absolute;
 	bottom: 8px;
 	left: 17px;
+	cursor: pointer;
 }
 
 .circle{
