@@ -1,7 +1,7 @@
 // JS
 
 let currentSong = new Audio();
-
+let songs;
 function formatSeconds(seconds) {
     const minutes = Math.floor(seconds / 60);
     const remainingSeconds = Math.floor(seconds % 60); // Truncate decimals
@@ -44,7 +44,7 @@ const playMusic = (track, pause=false)=>{
 async function main() {
 
 	// get the list o f all audios 
-	let songs = await getsongs(); 
+	songs = await getsongs(); 
 	// console.log(songs);
 	playMusic(songs[0], true);
 
@@ -97,6 +97,44 @@ async function main() {
 		let percent = (e.offsetX / e.target.getBoundingClientRect().width) * 100;
 		document.querySelector(".circle").style.left = percent + "%";
 		currentSong.currentTime = (currentSong.duration*percent)/100;	
+	})
+
+
+	//hamburger open 
+	document.querySelector(".hamburger").addEventListener("click", ()=>{
+		document.querySelector(".left").style.left = "0%"
+	})
+
+	//hamburger open by playlist's card click
+	document.querySelectorAll(".card").forEach((card)=>{
+		card.addEventListener("click", ()=>{
+			document.querySelector(".left").style.left = "0%";
+		})
+	})
+
+	//hamburger close
+	document.querySelector(".closeLogo").addEventListener("click", ()=>{
+		document.querySelector(".left").style.left = "-100%"
+	})
+
+	// add event listener to previous
+	previous.addEventListener("click", ()=>{
+		let index = songs.indexOf(currentSong.src.split("/").slice(-1) [0]);
+		if(index-1 >= 0){
+			playMusic(songs[index-1]);
+		} else{
+			playMusic(songs[songs.length-1]);
+		}
+	})
+	
+	// add event listener to next
+	next.addEventListener("click", ()=>{
+		let index = songs.indexOf(currentSong.src.split("/").slice(-1) [0]);
+		if((index+1) >= songs.length){
+			playMusic(songs[0]);
+		} else{
+			playMusic(songs[index+1]);
+		}
 	})
 } 
 
