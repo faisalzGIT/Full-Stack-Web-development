@@ -10,6 +10,22 @@ function formatSeconds(seconds) {
     return `${minutes}:${remainingSeconds.toString().padStart(2, '0')}`;
 }
 
+//function for extension chosing
+async function getImageSrc(folder) {
+	const basePath = `/Audios/${folder}/img`;
+	const extensions = ['jpg','jpeg','png','webp'];
+		for (const ext of extensions) {
+			try{
+				const response = await fetch(`${basePath}.${ext}`);
+				if(response.ok){
+					return `${basePath}.${ext}`;
+				}
+			} catch (e){
+				// alert(`image not found for playlist ${folder}`)
+			}
+		}
+}
+
 async function getsongs(folder) {	
 	currFolder = folder;
 	let a = await fetch(`http://127.0.0.1:5500/${folder}/`);
@@ -93,8 +109,9 @@ async function displayAlbums() {
 			let metadataFetch = await fetch(`http://127.0.0.1:5500/Audios/${folder}/info.json`);
 			let response = await metadataFetch.json();
 			// console.log(response);
+			const imgSrc = await getImageSrc(folder);
 			cardsHTML += `<div data-folder="${folder}" class="card">
-            <img src="/Audios/${folder}/img.jpg" alt="">
+            <img src="${imgSrc}" alt="">
             <h3>${response.title}</h3>
             <p>${response.description}</p>
             <div class="play">
