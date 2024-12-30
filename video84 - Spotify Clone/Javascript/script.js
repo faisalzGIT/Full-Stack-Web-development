@@ -1,5 +1,4 @@
 // JS
-
 let currentSong = new Audio();
 let songs;
 let currFolder;
@@ -10,25 +9,9 @@ function formatSeconds(seconds) {
     return `${minutes}:${remainingSeconds.toString().padStart(2, '0')}`;
 }
 
-//function for extension chosing
-async function getImageSrc(folder) {
-	const basePath = `/Audios/${folder}/img`;
-	const extensions = ['jpg','jpeg','png','webp'];
-		for (const ext of extensions) {
-			try{
-				const response = await fetch(`${basePath}.${ext}`);
-				if(response.ok){
-					return `${basePath}.${ext}`;
-				}
-			} catch (e){
-				// alert(`image not found for playlist ${folder}`)
-			}
-		}
-}
-
 async function getsongs(folder) {	
 	currFolder = folder;
-	let a = await fetch(`http://127.0.0.1:5500/${folder}/`);
+	let a = await fetch(`${folder}/`);
 	let response = await a.text();
 
 	let div = document.createElement("div")
@@ -51,6 +34,8 @@ async function getsongs(folder) {
 	let songUL = document.querySelector(".songList").getElementsByTagName("ul")[0];
 	songUL.innerHTML = "";
 	for (const song of songs) {
+		console.log("the main song " + song);
+		
 		songUL.innerHTML = songUL.innerHTML + `<li>
 			<div class="info">
 				<div>${song.replaceAll("-"," ").replace(".mp3","")}</div>
@@ -70,6 +55,8 @@ async function getsongs(folder) {
 			playMusic(e.querySelector(".info").firstElementChild.innerHTML.replaceAll(" ","-") + ".mp3")
 		})
 	})
+
+	return songs
 }
 
 //playMusic ka function
@@ -85,8 +72,8 @@ const playMusic = (track, pause=false)=>{
 }
 
 //display all the albums
-async function displayAlbums() {
-	let a = await fetch(`http://127.0.0.1:5500/Audios`);
+async function displayAlbums() { 
+	let a = await fetch(`Audios`);
 	let response = await a.text();
 
 	let div = document.createElement("div")
@@ -100,16 +87,18 @@ async function displayAlbums() {
 		// console.log(e.href);
 	let cardsHTML = "";
 	for (const anchor of anchors) {
-		const e = anchor;	
-		if(e.href.includes("/Audios/")){
-			let folder = e.href.split("/").slice(-1)[0];
+		const e = anchor;			
+		if(e.href.includes("/Audios/") && !e.href.includes(".htaccess")){
+            let folder = e.href.split("/").slice(-2)[1]
 			//get the meta data of the folder
-			// console.log(folder);
+			console.log("the folder:"+ folder);
 			
-			let metadataFetch = await fetch(`http://127.0.0.1:5500/Audios/${folder}/info.json`);
+			let metadataFetch = await fetch(`Audios/`+folder+`/info.json`);
+			console.log(`Fetching from: Audios/${folder}/info.json`);
+
 			let response = await metadataFetch.json();
 			// console.log(response);
-			const imgSrc = await getImageSrc(folder);
+			const imgSrc =  `/Audios/${folder}/img.jpg`
 			cardsHTML += `<div data-folder="${folder}" class="card">
             <img src="${imgSrc}" alt="">
             <h3>${response.title}</h3>
@@ -128,18 +117,18 @@ async function displayAlbums() {
 			console.log(item.currentTarget);
 			
 			songs = await getsongs(`Audios/${item.currentTarget.dataset.folder}`);
+			playMusic(songs[0]);
 		})
 	})
 }
 async function main() {
-	
 	// get the list o f all audios 
 	await getsongs('Audios/cs'); 
 	// console.log(songs);
 	playMusic(songs[0], true);
 	
 	displayAlbums();
-	// attach an EventListener to previous, play, next
+	// attach an EventListener to play
 	play.addEventListener("click",()=>{
 		if(currentSong.paused){
 			currentSong.play();
