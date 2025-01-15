@@ -6,13 +6,24 @@ const port = 3000
 app.use(express.static('public'));
 
 app.get('/', (req, res) => {
-  	res.send('Hello World!')
+  	res.send('Hello INDIA!')
   	console.log('Hey its a GET request');
+}).post('/post', (req, res) => {
+	res.send('hello ji its a POST request!');
+	console.log('Hey its a POST request');
+}).put('/put', (req, res) => {
+	res.send('hello ji its a put request!');
+	console.log('Hey its a put request');
 })
 
-app.post('/', (req, res) => {
-	res.send('Hello World!')
-	console.log('Hey its a POST request');
+app.get('/index', (req,res)=>{
+	console.log('it is an INDEx');
+	res.sendFile('index2.html', {root: __dirname})
+	res.sendFile('styling2.css', {root: __dirname})
+})
+
+app.get('/api', (req, res)=>{
+	res.json({ a:1, b:2, c:3, name:['harry', 'jerry']})
 })
 
 app.listen(port, () => {
