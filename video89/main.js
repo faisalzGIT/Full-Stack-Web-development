@@ -1,7 +1,11 @@
 const exp = require('constants')
 const express = require('express')
 const app = express()
+const router = require('./routes/firstEverRoute.js');
+
 const port = 3000
+
+app.use('/api', router); 
 
 app.use(express.static('public'));
 
@@ -18,8 +22,7 @@ app.get('/', (req, res) => {
 
 app.get('/index', (req,res)=>{
 	console.log('it is an INDEx');
-	res.sendFile('index2.html', {root: __dirname})
-	res.sendFile('styling2.css', {root: __dirname})
+	res.sendFile('temlates/index.html', {root: __dirname})
 })
 
 app.get('/api', (req, res)=>{
